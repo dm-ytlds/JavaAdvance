@@ -1,5 +1,5 @@
 package com.dengmin.demi.Array;
-import org.jetbrains.annotations.NotNull;
+//import org.jetbrains.annotations.NotNull;
 
 import java.util.Arrays;
 
@@ -57,7 +57,7 @@ public class BubbleSort {
 
     }
     // 冒泡排序方法
-    public int[] bubbleSort(int @NotNull [] array) {
+    public int[] bubbleSort(int[] array) {
         // 临时变量
         int temp;
         // 遍历数组元素
