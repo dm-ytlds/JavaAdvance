@@ -21,6 +21,7 @@ public class StringBufferTest {
         stringBuffer.append('a');
         stringBuffer.append(1);
         stringBuffer.append("abc");
+        stringBuffer.append(true);
         // 输出。自动调用.toString()方法转换成字符串。
         System.out.println(stringBuffer);
     }
