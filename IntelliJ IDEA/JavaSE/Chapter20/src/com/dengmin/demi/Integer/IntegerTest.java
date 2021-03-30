@@ -9,9 +9,15 @@ public class IntegerTest {
         // 基本数据类型-->引用数据类型（装箱）
         // 自动装箱
         Integer i = 12;
+        // 手动装箱
+        Integer x = new Integer(123);
+        // 手动拆箱
+        int y = x.intValue();
+        System.out.println(y);
         Boolean b = i.equals(2);
         System.out.println(b);
         // 引用数据类型-->基本数据类型（拆箱）
+        // 手动拆箱
         float f = i.floatValue();
         // 将字符串类型的int数据转换成int。Integer a = new Integer("abc");
         Integer a = Integer.valueOf("124");
