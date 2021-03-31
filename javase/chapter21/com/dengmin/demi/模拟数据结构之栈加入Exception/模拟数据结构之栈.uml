@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>com.dengmin.demi.Homework.模拟数据结构之栈</OriginalElement>
+  <nodes>
+    <node x="200.0" y="0.0">com.dengmin.demi.Homework.模拟数据结构之栈.Animals</node>
+    <node x="0.0" y="0.0">com.dengmin.demi.Homework.模拟数据结构之栈.MyStack</node>
+    <node x="0.0" y="241.0">com.dengmin.demi.Homework.模拟数据结构之栈.TestCode</node>
+  </nodes>
+  <notes />
+  <edges />
+  <settings layout="Hierarchic Group" zoom="1.0" x="169.5" y="269.5" />
+  <SelectedNodes />
+  <Categories>
+    <Category>字段</Category>
+    <Category>构造函数</Category>
+    <Category>方法</Category>
+    <Category>属性</Category>
+    <Category>内部类</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

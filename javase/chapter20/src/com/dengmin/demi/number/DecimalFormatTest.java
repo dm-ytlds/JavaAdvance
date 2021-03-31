@@ -1,7 +1,5 @@
 package src.com.dengmin.demi.number;
 
-import java.text.DecimalFormat;
-
 /*
 * 对数字的格式化处理
 * 数字的格式有哪些？

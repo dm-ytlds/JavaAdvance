@@ -1,4 +1,5 @@
 package src.com.dengmin.demi.StringBuffer;
+
 /*
 * -->思考：在实际的开发过程中，如果需要进行频繁的字符串拼接，会有什么问题？
 
@@ -17,7 +18,7 @@ public class StringBufferTest {
         // 创建一个初始化容量为16的byte[] 数组。（字符串缓冲区对象）当容量超过16，会自动扩容。
         // 当然，也可以手动初设置一个容量。
         StringBuffer stringBuffer = new StringBuffer(100);
-         // 拼接字符串，统一调用append()方法。
+        // 拼接字符串，统一调用append()方法。
         stringBuffer.append('a');
         stringBuffer.append(1);
         stringBuffer.append("abc");

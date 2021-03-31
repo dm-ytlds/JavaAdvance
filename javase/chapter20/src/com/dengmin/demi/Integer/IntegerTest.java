@@ -1,4 +1,5 @@
 package src.com.dengmin.demi.Integer;
+
 /*
 * Java中为8中基本数据类型提供了对应的包装类型。8中包装类型属于引用数据类型，父类是Object。为什么需要另写8种包装类？
     答：如果传参时需要传的是对象，那么8种基本数据类型就不能直接传值进去，需要包装成对象才可以用，所以SUN公司写了对应的包装类。
@@ -24,8 +25,6 @@ public class IntegerTest {
         Integer c = Integer.getInteger("124");
         System.out.println(a);
         System.out.println(c);
-
-
 
 
     }

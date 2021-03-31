@@ -1,6 +1,5 @@
 package src.com.dengmin.demi.randomNum;
 
-import java.util.Arrays;
 import java.util.Random;
 
 /**
