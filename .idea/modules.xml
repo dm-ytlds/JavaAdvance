@@ -2,12 +2,13 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/IntelliJ IDEA/JavaStudy/Chapter15/Chapter15.iml" filepath="$PROJECT_DIR$/IntelliJ IDEA/JavaStudy/Chapter15/Chapter15.iml" />
-      <module fileurl="file://$PROJECT_DIR$/IntelliJ IDEA/JavaStudy/Chapter19/Chapter19.iml" filepath="$PROJECT_DIR$/IntelliJ IDEA/JavaStudy/Chapter19/Chapter19.iml" />
-      <module fileurl="file://$PROJECT_DIR$/IntelliJ IDEA/JavaStudy/Chapter20/Chapter20.iml" filepath="$PROJECT_DIR$/IntelliJ IDEA/JavaStudy/Chapter20/Chapter20.iml" />
-      <module fileurl="file://$PROJECT_DIR$/IntelliJ IDEA/JavaStudy/Chapter21/Chapter21.iml" filepath="$PROJECT_DIR$/IntelliJ IDEA/JavaStudy/Chapter21/Chapter21.iml" />
       <module fileurl="file://$PROJECT_DIR$/DesignPatterns/DesignPatterns.iml" filepath="$PROJECT_DIR$/DesignPatterns/DesignPatterns.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/JavaAdvance.iml" filepath="$PROJECT_DIR$/.idea/JavaAdvance.iml" />
+      <module fileurl="file://$PROJECT_DIR$/javase/chapter15/chapter15.iml" filepath="$PROJECT_DIR$/javase/chapter15/chapter15.iml" />
+      <module fileurl="file://$PROJECT_DIR$/javase/chapter19/chapter19.iml" filepath="$PROJECT_DIR$/javase/chapter19/chapter19.iml" />
+      <module fileurl="file://$PROJECT_DIR$/javase/chapter20/chapter20.iml" filepath="$PROJECT_DIR$/javase/chapter20/chapter20.iml" />
+      <module fileurl="file://$PROJECT_DIR$/javase/chapter21/chapter21.iml" filepath="$PROJECT_DIR$/javase/chapter21/chapter21.iml" />
+      <module fileurl="file://$PROJECT_DIR$/javase/javase.iml" filepath="$PROJECT_DIR$/javase/javase.iml" />
     </modules>
   </component>
 </project>
