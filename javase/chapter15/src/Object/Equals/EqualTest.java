@@ -1,4 +1,4 @@
-package Object.Equals;
+package src.Object.Equals;
 
 import java.util.Objects;
 
@@ -11,10 +11,12 @@ public class EqualTest {
         System.out.println(m1.toString());
     }
 }
+
 class MyTime {
     private int year;
     private int month;
     private int day;
+
     public MyTime() {
 
     }
@@ -61,15 +63,15 @@ class MyTime {
     @Override
     public boolean equals(Object obj) {
         // obj对象是一个空引用，obj不是MyTime类型
-        if(obj == null || !(obj instanceof MyTime)) {
+        if (obj == null || !(obj instanceof MyTime)) {
             return false;
         }
         // obj调用的本身
-        if(this == obj) {
+        if (this == obj) {
             return true;
         }
         // 向下转型，引用MyTime的私有变量
-        MyTime mt = (MyTime)obj;
+        MyTime mt = (MyTime) obj;
         int newYear = mt.getYear();
         int newMonth = mt.getMonth();
         int newDay = mt.getDay();

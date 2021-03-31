@@ -1,4 +1,4 @@
-package com.dengmin.demi.Array;
+package src.com.dengmin.demi.Array;
 /*
 * 选择排序。
 *   选择从“参与选择的一堆数据”中找出最小值；

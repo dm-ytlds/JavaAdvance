@@ -1,12 +1,14 @@
-package 接口在开发中的作用;
+package src.接口在开发中的作用;
 
 public class Customer {
     // 实例化对象 菜单 ，将其变成顾客的实例变量。面向抽象编程，面向接口编程，降低耦合度，增强扩展性。
     // 养成封装的好习惯private
     private FoodMenu foodMenu;
+
     public Customer() {
 
     }
+
     public Customer(FoodMenu foodMenu) {
         this.foodMenu = foodMenu;
     }

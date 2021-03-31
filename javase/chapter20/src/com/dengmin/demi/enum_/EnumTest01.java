@@ -1,4 +1,4 @@
-package com.dengmin.demi.enum_;
+package src.com.dengmin.demi.enum_;
 
 // 枚举
 /*

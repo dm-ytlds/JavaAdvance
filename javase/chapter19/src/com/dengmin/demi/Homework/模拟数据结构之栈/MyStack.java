@@ -1,4 +1,4 @@
-package com.dengmin.demi.Homework.模拟数据结构之栈;
+package src.com.dengmin.demi.Homework.模拟数据结构之栈;
 
 public class MyStack {
     // 最多容纳的数组元素

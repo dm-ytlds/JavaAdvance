@@ -1,4 +1,4 @@
-package com.dengmin.demi.Homework.酒店管理系统;
+package src.com.dengmin.demi.Homework.酒店管理系统;
 
 public class Hotel<print> {
     private Room[][] rooms;

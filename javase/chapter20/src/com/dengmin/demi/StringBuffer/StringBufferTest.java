@@ -1,4 +1,4 @@
-package com.dengmin.demi.StringBuffer;
+package src.com.dengmin.demi.StringBuffer;
 /*
 * -->思考：在实际的开发过程中，如果需要进行频繁的字符串拼接，会有什么问题？
 

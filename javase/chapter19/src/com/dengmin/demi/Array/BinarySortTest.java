@@ -1,4 +1,4 @@
-package com.dengmin.demi.Array;
+package src.com.dengmin.demi.Array;
 
 public class BinarySortTest {
 

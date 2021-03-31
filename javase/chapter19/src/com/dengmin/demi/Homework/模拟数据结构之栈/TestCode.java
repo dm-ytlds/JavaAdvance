@@ -1,4 +1,4 @@
-package com.dengmin.demi.Homework.模拟数据结构之栈;
+package src.com.dengmin.demi.Homework.模拟数据结构之栈;
 
 import java.util.Scanner;
 

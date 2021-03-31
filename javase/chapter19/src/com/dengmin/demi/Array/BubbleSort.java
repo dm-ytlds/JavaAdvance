@@ -1,4 +1,4 @@
-package com.dengmin.demi.Array;
+package src.com.dengmin.demi.Array;
 //import org.jetbrains.annotations.NotNull;
 
 import java.util.Arrays;

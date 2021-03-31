@@ -1,4 +1,4 @@
-package com.dengmin.demi.Array;
+package src.com.dengmin.demi.Array;
 // 注意：在Run-->Edit Configurations-->Program Arguments可以设置软件参数，以空格隔开。
 // 模拟一个系统，假设需要使用，必须提供用户名和密码。
 public class Main中args默认数组的作用 {

@@ -1,4 +1,4 @@
-package com.dengmin.demi.randomNum;
+package src.com.dengmin.demi.randomNum;
 
 import java.util.Random;
 

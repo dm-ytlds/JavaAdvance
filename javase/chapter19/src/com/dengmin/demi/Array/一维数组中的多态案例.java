@@ -1,4 +1,4 @@
-package com.dengmin.demi.Array;
+package src.com.dengmin.demi.Array;
 
 public class 一维数组中的多态案例 {
     public static void main(String[] args) {

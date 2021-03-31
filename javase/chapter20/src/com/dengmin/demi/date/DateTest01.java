@@ -1,4 +1,4 @@
-package com.dengmin.demi.date;
+package src.com.dengmin.demi.date;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

@@ -1,4 +1,4 @@
-package com.dengmin.demi.Integer;
+package src.com.dengmin.demi.Integer;
 
 /*
  * String int Integer之间的互相转换

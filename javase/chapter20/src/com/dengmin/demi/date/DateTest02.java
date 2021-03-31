@@ -1,4 +1,4 @@
-package com.dengmin.demi.date;
+package src.com.dengmin.demi.date;
 
 /*
  * 获取自1970年1月1日到目前系统时间的总毫秒数。

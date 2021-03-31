@@ -1,4 +1,4 @@
-package com.dengmin.demi.String;
+package src.com.dengmin.demi.String;
 
 public class Test01 {
 }
