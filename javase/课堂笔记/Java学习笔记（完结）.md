@@ -190,8 +190,10 @@ Student s = new Student();
 
 ---------------------------------------------------------------------多态：引用数据类型。两种类型必须具有继承关系。目的：降低程序块之间的耦合度，提高扩展性。
 
- 			---->向上转型（子类-->父类），与 自动转换 类似
- 			---->向下转型（父类-->子类），与 强制转换 类似
+```markdown
+		---->向上转型（子类-->父类），与 自动转换 类似
+		---->向下转型（父类-->子类），与 强制转换 类似
+```
 
 -什么时候进行向下转型？
 
@@ -653,7 +655,7 @@ String类中常用的方法：
 
 ​	理由：方法体中的代码必须遵循自上而下顺序依次逐行执行！！！
 
-```
+```java
 pubilc int m() {
 	int i = 100;
 	try {
@@ -724,9 +726,9 @@ pubilc int m() {
 
 8. Properties集合是线程安全的，因为继承的是Hashtable，另外Properties存储元素的时候也是采用key和value的形式存储的，并且key和value只支持String类型，不支持其他引用数据类型（因为集合中只能存储对象的内存地址）。Properties也被称为属性类。 
 
-![集合继承结构图(包含Map集合)](集合继承结构图(包含Map集合).jpg)
+![集合继承结构图(包含Map集合)](snapshots/集合继承结构图(包含Map集合).jpg)
 
-![Map集合继承结构图](Map集合继承结构图.jpg)
+![Map集合继承结构图](snapshots/Map集合继承结构图.jpg)
 
 ====================================
 
@@ -836,7 +838,7 @@ pubilc int m() {
 
 5.1语法格式：
 
-```
+```java
 for(元素数据类型 变量名 ： 数组或者集合) {
 	System.out.println(变量名);
 }
@@ -882,7 +884,7 @@ for(元素数据类型 变量名 ： 数组或者集合) {
 
 ​	（3）HashMap集合底层源代码：
 
-```
+```java
 public class HashMap {
 	// HashMap底层实际上是一个数组
 	Node<K, V> table;
@@ -912,7 +914,7 @@ public class HashMap {
 
 6.5 <font color=#FF0000>HashMap集合中，同一个单向链表的hash值是一样的。因为他们的数组下标是一样的 。最好的存储方式是散列分布均匀。</font>     
 
-<img src="Map存储结构图.png" alt="Map存储结构图"/>
+<img src="snapshots/Map存储结构图.png" alt="Map存储结构图"/>
 
 6.6 HashMap集合的初始容量是16（其中数组的长度，无关单向链表），默认加载因子是0.75。（加载因子就是当容量达到初始容量的75%时，就开始扩容了。）扩容是原容量的2倍。
 
@@ -1090,7 +1092,7 @@ IO流（输入输出流）：完成硬盘文件的读写。
 
 ​	例如：
 
-```
+```java
 // 两个节点流，两个包装流
 PrintStream ps = new PrintStream(new FileOutputStream("文件名", true));   // 设置成true，表示文件可追加。
 System.setOut(ps);
@@ -1132,7 +1134,7 @@ System.setOut(ps);
 
 ​	对应 ObjectOutputStream 和 ObjectInputStream 两个流。
 
-![操作流程图](序列化和反序列化.png)
+![操作流程图](snapshots/序列化和反序列化.png)
 
 ​	参与序列化和反序列化的对象必须实现 Serializable 接口。Serializable 接口是一个标志接口，里面没有任何代码。Java虚拟机（JVM）看到这类接口后，会自动生成一个序列版本号。
 
@@ -1150,7 +1152,7 @@ System.setOut(ps);
 
    使用了多线程机制之后，main方法结束，是不是有可能程序也不会结束。main方法结束只是主线程结束，主栈空了，其他的栈(线程)可能还在压栈弹栈。
 
-   ![线程和进程](线程(一个栈)和进程(一个或多个栈).png)
+   ![线程和进程](snapshots/线程(一个栈)和进程(一个或多个栈).png)
 
    Q：对于单核CPU来说，真的可以做到多线程并发吗？什么是真正的多线程并发？
 
@@ -1174,7 +1176,373 @@ System.setOut(ps);
 
    （2）编写一个类，实现java.lang.Runnable接口，实现run()方法。
 
-   ![线程生命周期](线程生命周期流程图.png)
+   ![线程生命周期](snapshots/线程生命周期流程图.png)
 
-   
+   Thread.sleep()：休眠当前线程。单位：毫秒。出现在哪个方法，就休眠那个方法中的线程。
 
+   - 怎么终止线程的睡眠？
+
+     调用.interrupt()方法就可以实现。
+
+   - 怎么合理的停止线程？
+
+     通过boolean标记的形式来实现。chapter24
+
+   --->run()方法中的异常，不能throws，只能try...catch()。因为run()方法在父类中没有抛出任何异常，子类不能比父类抛出更多的异常。（继承的知识点）
+
+   -->关于多线程开发环境下，如何保证数据安全？<--
+
+   - 在实际开发中，我们的项目都是运行在服务器中，而服务器已经将线程定义好了，线程的创建，线程的启动等等，都已经实现了。不需要我们编写。
+   - 最重要的是：将数据放在多线程并发环境下是否是安全的。
+
+什么时候数据在多线程并发的环境下会存在线程安全问题？
+
++ 条件1：多线程并发；
++ 条件2：有共享数据；
++ 条件3：共享数据有修改的行为。
+
+怎么解决线程安全问题？
+
+​	出现问题：当多线程并发的环境下，有数据共享，并且这个数据还会被修改，此时就存在线程安全问题，怎么解决这个问题？
+
+​	解决方案：线程排队执行，而不是并发执行。这种机制被称为：线程同步机制。
+
+----->异步（并发）编程模型和同步（排队）编程模型。
+
+线程同步机制的语法之<font color=#FF0000>一</font>：
+
+```java
+synchronized(线程共享对象) {
+	// 线程同步代码块
+}
+```
+
+synchronized后面小括号中传的这个“数据”是相当关键的。这个数据必须是多线程共享的数据，才能达到多线程排队。锁池不属于某一状态，可以看成是阻塞状态的一种形式。局部变量不会存在数据安全问题。静态变量和实例变量存在数据安全问题。
+
+![synchronized出现后](snapshots/线程生命周期流程图续.png)
+
+synchronized出现在实例方法做修饰符时，一定锁的是this，这种方式不灵活。并且同步的是整个方法体，可能导致执行效率降低。
+
+线程同步机制的语法之<font color=#FF0000>二</font>：实例方法上用synchronized关键字。这种方式称为：对象锁。创建几个对象就会存在几把对象锁。
+
+```java
+public synchronized void doSomething(){}
+```
+
+线程同步机制的语法之<font color=#FF0000>三</font>：静态方法上用synchronized关键字。这种方式称为：类锁。不管创建几个对象，类锁都只有一把。
+
+```java
+public synchronized static void doSomething(){}
+```
+
+死锁怎么写？？synchronized在开发中最好不要嵌套使用，容易出现死锁。
+
+```java
+public class TestDeadLock {
+    public static void main(String[] args) {
+        Object obj1 = new Object();
+        Object obj2 = new Object();
+
+        MyThread01 mt1 = new MyThread01(obj1, obj2);
+        MyThread02 mt2 = new MyThread02(obj1, obj2);
+        mt1.setName("mt1");
+        mt2.setName("mt2");
+        mt1.start();
+        mt2.start();
+    }
+}
+// 创建线程类1
+class MyThread01 extends Thread {
+    Object obj1;
+    Object obj2;
+
+    public MyThread01(Object obj1, Object obj2) {
+        this.obj1 = obj1;
+        this.obj2 = obj2;
+    }
+    /*
+    * 模拟出现死锁，让共享对象在使用对象锁的时候，睡1秒
+    * */
+    @Override
+    public void run() {
+        synchronized (obj1) {
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            synchronized (obj2) {
+
+            }
+        }
+    }
+}
+// 创建线程类2
+class MyThread02 extends Thread {
+
+    Object obj1;
+    Object obj2;
+
+    public MyThread02(Object obj1, Object obj2) {
+        this.obj1 = obj1;
+        this.obj2 = obj2;
+    }
+    @Override
+    public void run() {
+        synchronized (obj2) {
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            synchronized (obj1) {
+                System.out.println();
+            }
+        }
+    }
+}
+```
+
+怎么解决数据安全问题？
+
+​	尽量选择以下方案避免直接开始使用synchronized：
+
+​	方案1：尽量使用局部变量（栈中）代替“实例变量（堆中）和静态变量（方法区中）”；
+
+​	方案2：如果必须使用实例变量，可以考虑创建对个对象，这样实例变量的内存就不共享了；
+
+​	如果不能使用局部变量代替，且对象也不能创建多个，才考虑使用synchronized线程同步机制。
+
+有关线程的其他内容：
+
++ 守护线程
++ 定时器
++ 实现线程的第三种方式：FutureTask方式，实现callable接口。（JDK1.8及以上才支持）
++ 关于Object中的wait和notify方法。（生产者和消费者模式！）
+
+--->守护线程
+
+​	Java语言中线程分为两大类：
+
+​		. 用户线程。主线程main()方法就是一个用户线程。
+
+​		. 守护线程（后台线程）。垃圾回收线程就属于守护线程。
+
+​		守护线程的特点：一般都是一个死循环，所有的用户线程结束，守护线程就会自动结束。
+
+--->定时器
+
+​	定时器的作用：间隔特定的时间，进行特定的操作。
+
+在Java开发中，可以采用多种方式实现：
+
+​	可以使用sleep方法，睡眠，设置睡眠时间，每到这个时间点起来，执行任务。这是最原始的定时器。（少用）
+
+​	在Java的类库中已经写好了一个定时器：java.util.Timer，可以直接用，不过这种方式目前在开发中也很少用，因为现在很多高级框架都支持定时任务的。
+
+​	在实际开发中，目前较常用的是spring框架中提供的SpringTask框架。
+
+java.util.Timer; 定时器
+
+```java
+Timer timer = new Timer();
+// 指定定时任务
+timer.schedule(定时任务, 第一次执行时间, 间隔多久执行一次);
+```
+
+--->FutureTask方式，实现callable接口。java.util.concurrent.FutureTask 
+
+​	可以接收运行的返回值。callable中的call()方法相当于run()方法，只不过call()方法有返回值。
+
+--->关于Object中的wait和notify方法。
+
+​	wait()方法的作用？
+
+​	Object o = new Object();
+
+​	o.wait();	
+
+​	o.notify();	
+
+​		让正在o对象上活动的线程进入等待状态，无限期等待，直到被notify()方法唤醒为止。o.wait();方法的调用，会让“当前线程（正在o对象上活动的线程）”进入等待状态。
+
+​		o.notify();唤醒正在o对象上等待的线程。
+
+​	生产者和消费者模式图解：
+
+<img src="/snapshots/生产者和消费者模式.png">
+
+什么是生产者和消费者模式？
+
+​	生产线程负责生产，消费线程负责消费；
+
+​	生产线程和消费线程要达到均衡；
+
+​	在这种特殊情况下需要用到wait()和notify方法。
+
+​	wait()和notify方法是所有普通java对象都有的方法。
+
+​	wait()和notify方法建立在线程同步的基础之上，因为多线程要同时操作一个仓库。有线程安全问题。
+
+---
+
+<font color=#FFB6C1>Date: 2021.04.30</font>
+
+<font color=#FFFF00>反射机制</font>
+
+反射机制有什么用？ java.lang.reflect.*;
+
+​	可以通过反射机制来操作（读和写）字节码文件。
+
+反射机制相关的重要类有哪些？
+
+​	java.lang.Class; 代表字节码文件。代表整个类文件
+
+​	java.lang.reflect.Method; 代表字节码中的方法字节码。代表类中的方法
+
+​	java.lang.reflect.constructor; 代表字节码中的构造方法字节码。代表类中的构造方法
+
+​	java.lang.reflect.Field; 代表字节码中的属性字节码。代表类中的成员变量（静态变量和局部变量）
+
+-->怎么获取类的字节码Class文件？
+
+​	(1) 第一种方式：Class.forName("完整类名带包名");
+
+​	(2) 第二种方式：对象名.getClass();
+
+​	(3) 第三种方式：java语言中任何一种类型，包括基本数据类型，都有.calss属性。
+
+----得到Class文件之后，调用.newInstance()方法，得到对象的无参构造方法。
+
+---
+
+一种比较通用的文件路径配置方法。
+
+​	类路径下？就是src为文件的根路径。 
+
+```java
+// Thread.currentThread()是当前线程对象
+// getContextClassLoader() 是线程对象的方法，可以获取到当前对象的类加载器对象
+// getResource() 类加载器对象的方法，当前线程的类加载器默认从类的根路径下加载资源
+// 采用以下代码获取的是文件的绝对路径。
+String path = Thread.currentThread().getContextClassLoader().getResource("文件名字").getPath();
+// 直接以流的形式返回
+InputStream input = Thread.currentThread().getContextClassLoader().getResourceAsStream("文件");
+```
+
+----java.util包下提供了一个资源绑定器，便于获取属性配置文件中的内容。使用以下这种方式的时候，属性配置文件xxx.properties必须放在类路径下。
+
+```java
+import java.util.ResourceBundle
+ResourceBundle rb = ResourceBundle.getBundle("路径名（不加后缀）");
+String s = rb.getString(key);
+```
+
+类加载器：专门负责加载类的命令或者工具。
+
+JDK中自带了3类类加载器：
+
+​	启动类加载器：rt.jar；
+
+​	扩展类加载器：ext/*.jar；
+
+​	应用类加载器：classpath。
+
+--->测试Field
+
+​	
+
+```java
+/*
+* 使用反射机制给类中的属性赋值。重点！！！
+* */
+public class ReflectTest02 {
+    public static void main(String[] args) throws Exception{
+        Student s = new Student();
+        //
+        Class studentClass = Class.forName("com.dengmin.demi.reflect.Student");
+        // 实例化一个student对象(o)
+        Object o = studentClass.newInstance();
+        // 通过studentClass.getDeclaredField()方法调用相应的Field属性
+        Field noFiled = studentClass.getDeclaredField("no");
+        // 通过noFiled.set()方法给获取的属性no赋值
+        noFiled.set(o, 222);
+        // 通过noFiled.get()方法给获取的属性no的值
+        System.out.println(noFiled.get(o));
+
+    }
+}
+```
+
+<font color=#FFB6C1>Date: 2021.05.06</font>
+
+--->补充知识点：可变长参数的用法
+
+​	语法：类型... 
+
+​	例子：
+
+```java
+/*
+1.可变长度参数的取值范围：[0, N];
+2.可变长度参数在参数列表中只能是最后一个参数，可变长度参数最多只能设置一个;
+3.可以给可变长度参数传入一个数组
+*/
+public class test {
+    public static void main(String[] args) {
+        m();
+        m(10);
+        m(10, 20);
+    }
+    public static void m(int... args) {
+        for(int i = 0; i < args.length; i++) {
+            System.out.println(args[i]);
+        }
+    	
+	}
+}
+
+
+```
+
+通过反射机制调用方法：
+
+​	.invoke(Object obj, 参数类型...); // 调用obj对象的方法，传入参数，返回相应的值
+
+<font color=#FFFF00>Annotation 注释（注解）</font>
+
+注解，或者叫做注释类型。
+
+注解是一种引用数据类型。编译之后也是生成xxx.class文件。
+
+怎么自定义注解？
+
+​	[修饰符列表] @interface 注解类型名 {}
+
+注解的使用方法：@注解类型名
+
+注解用在哪些地方：可以出现在类上、属性上、方法上、变量上...，注解还可以出现在注解类型上。
+
+元注解：用来标注注解类型的注解。
+
+常见的注解有哪些：Target、Retention
+
+​	Target：用来标注“被标注的注解”可以出现在哪些位置。
+
+​	@Target(ElementType.METHOD)：表示被标注的注解只能出现在方法上。
+
+​	Retention：用来标注“被标注的注解”最终保存在哪。
+
+​	@Retention(RetentionPolicy.SOURCE)：表示该注解只能保留在.java源文件中。
+
+​	@Retention(RetentionPolicy.CLASS)：表示该注解被保存在.class文件中。
+
+​	@Retention(RetentionPolicy.RUNTIME)：表示该注解被保存在.class文件中。并且可以被反射机制检测到。
+
+注解中可以指定属性。语法：属性类型 属性名(); 比如：int age();
+
+​	可以用关键字default在后面加默认值。int age() default 25;
+
+调用方式：@注释名(属性名=属性值)。例如：@MyAnnotation(name="zhangsan")
+
+---
