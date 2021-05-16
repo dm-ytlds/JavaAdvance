@@ -696,7 +696,7 @@ pubilc int m() {
 
 ​	（3）在Java中每一个不同的集合，底层对应着不同的数据结构。
 
-​	（4）集合类和集合接口都在java.util包下。
+​	（4）集合类和集合接口都在 java.util 包下。
 
 ​	（5）在Java中集合分为两大类：
 
@@ -704,11 +704,13 @@ pubilc int m() {
 
 ​			键值对的形式存储元素（Map）。
 
-​	（6）所有集合继承Iterable接口，表示所有集合都是可迭代的。
+​	（6）所有集合继承 Iterable 接口，表示所有集合都是可迭代的。
 
-2. List集合：有序可重复，存储的元素有下标。下标有序。
+​	（7）集合元素只能通过迭代的方式取出。（用接口Iterator iterator = 集合名.iterator();  实现可迭代。   // 返回在此 collection 的元素上进行迭代的迭代器。）
 
-3. Map集合：包括HashMap和Hashtable
+2. List集合：有序可重复，存储的元素有下标。下标有序。（List是接口，不能直接创建对象，需要用其中的类来实现接口的功能。）
+
+3. Map集合：包括 HashMap 和 Hashtable
 
    ​	Map集合和Collection集合没有关系；
 
@@ -716,13 +718,13 @@ pubilc int m() {
 
    ​	key和value都是存储Java对象的内存地址。
 
-4. HashMap集合底层是哈希表数据结构，非线程安全的。
+4. HashMap 集合底层是哈希表数据结构，非线程安全的。
 
-5. Hashtable集合底层也是哈希表数据结构，是线程安全的（synchronized关键字修饰其内部方法）
+5. Hashtable 集合底层也是哈希表数据结构，是线程安全的（synchronized关键字修饰其内部方法）
 
-6. 所有Map集合的key特点：无序不可重复，Map集合的key和Set集合存储元素特点相同。
+6. 所有Map集合的key特点：无序不可重复，Map集合的key和Set集合存储元素特点相同（无序不可重复）。
 
-7. SortMap集合的key存储首先也是无序不可重复的，集合可以部分的元素会自动排序，称为可排序的集合。
+7. SortMap集合的key存储首先也是无序不可重复的，集合key部分的元素会自动排序，称为可排序的集合。
 
 8. Properties集合是线程安全的，因为继承的是Hashtable，另外Properties存储元素的时候也是采用key和value的形式存储的，并且key和value只支持String类型，不支持其他引用数据类型（因为集合中只能存储对象的内存地址）。Properties也被称为属性类。 
 
@@ -730,7 +732,7 @@ pubilc int m() {
 
 ![Map集合继承结构图](snapshots/Map集合继承结构图.jpg)
 
-====================================
+---
 
 **<font color=\#1E90FF>Collection接口的使用</font>**
 
@@ -754,11 +756,11 @@ pubilc int m() {
 
 <font color=#FFB6C1>Date: 2021.04.02</font>
 
-***遍历方式\迭代方式是所有Collection通用的一种方式。在Map集合中不能用，在所有的Collection以及子类中使用。
+***遍历方式\迭代方式是所有Collection通用的一种方式。在Map集合中不能用（可以将Map集合转换成Collection集合，从而使用该遍历方式），在所有的Collection以及子类中使用。
 
 ​		Iterator it = c.iterator();
 
-1. 迭代器Iterator是一个对象。	
+1. 迭代器Iterator是Collection接口中的一个属性类。	
 
    ​	迭代器Iterator和Collection类属于关联关系（has a）。
 
@@ -910,7 +912,7 @@ public class HashMap {
 
 ​		第一步，先调用k的hashCode()方法得出哈希值，通过哈希算法转换成数组下标，通过数组下标快速定位到某个位置上，如果这个位置上什么也没有，返回null。
 
-​		第二步，如果这个位置上有单向链表，那么会拿着参数k和单向链表上的每个节点的k进行equals，如果所有的equals方法返回false，那么get方法返回null，只要其中有一个节点的k 和参数k equlas的时候返回true，那么此时这个节点的value就是我们要找的value，get方法最终返回这个要找的value。
+​		第二步，如果这个位置上有单向链表，那么会拿着参数k和单向链表上的每个节点的k进行equals，如果所有的equals方法返回false，那么get方法返回null，只要其中有一个节点的k 和参数k equals 的时候返回true，那么此时这个节点的value就是我们要找的value，get方法最终返回这个要找的value。
 
 6.5 <font color=#FF0000>HashMap集合中，同一个单向链表的hash值是一样的。因为他们的数组下标是一样的 。最好的存储方式是散列分布均匀。</font>     
 
@@ -922,7 +924,7 @@ public class HashMap {
 
 6.7<font color=#FF0000>！！！如果一个类中的equals方法重写了，那么hashCode方法就必须重写。并且，equals方法返回的如果是true，hashCode方法返回的值必须一样。</font>
 
-​	原因：equals方法返回true表示两个对象相同，在同一个单向链表中比较。对于同一个单向链表上的节点来说，他们的哈希值都是相同的，所以hashCode方法的返回值也应该相同。
+​	原因：equals方法返回true表示两个对象相同，在同一个单向链表中比较。对于同一个单向链表上的节点来说，他们的哈希值都是相同的，所以hashCode()方法的返回值也应该相同。
 
 6.8！！ 在JDK8.0之后，如果哈希表中单向链表的节点数量超过8个，单向链表将会变成二叉树或红黑树这种数据结构。当红黑树上的节点数量小于6时，会重新把红黑树变成单向链表。
 
@@ -940,7 +942,7 @@ public class HashMap {
 
 ​	<font color=#FFFF00>v .getProperty(k);</font>   // 底层调用Map的get()方法。
 
-6.12 TreeSet集合底层实际上是一个TreeMap， TreeMap底层是一个二叉树。放到TreeSet中的元素，等同于放进了TreeMap的key部分。无序不可重复。但可以按照元素的大小自动排序。
+6.12 TreeSet集合底层实际上是一个TreeMap，TreeMap底层是一个二叉树。放到TreeSet中的元素，等同于放进了TreeMap的key部分。无序不可重复。但可以按照元素的大小自动排序。
 
 \-------------------------------------------------------------------
 
@@ -992,17 +994,18 @@ IO流（输入输出流）：完成硬盘文件的读写。
 
 ​	java.io.InputStream;  // 字节输入流
 
-​	java.io.OnputStream;  // 字节输出流
+​	java.io.OutputStream;  // 字节输出流
 
 ​	java.io.Reader;  // 字符输入流
 
 ​	java.io.Writer.  // 字符输出流
 
-​	！！！这四个类都是抽象的类。（1）<font color=#FF0000>所有的流都是可关闭的，都有.close()方法。用完流，一定要关闭。</font>（2）所有的输出流都是可刷新的（实现了flushable接口），都有flush()方法。<font color=#FF0000>输出流在最终输出之后，一定要记得.flush()刷新一下。这个刷新表示将通道/管道当中剩余的数据强行输出，清空管道。</font>
+​	！！！这四个类都是抽象的类。（1）<font color=#FF0000>所有的流都是可关闭的，都有 .close() 方法。用完流，一定要关闭。</font>（2）所有的输出流都是可刷新的（实现了flushable接口），都有 .flush() 方法。<font color=#FF0000>输出流在最终输出之后，一定要记得.flush()刷新一下。这个刷新表示将通道/管道当中剩余的数据强行输出，清空管道。</font>
 
 -->java.io包下需要掌握的16个流：
 
-​	文件专属：
+```java
+	文件专属：
 
 ​		java.io.FileInputStream
 
@@ -1045,6 +1048,7 @@ IO流（输入输出流）：完成硬盘文件的读写。
 ​		java.io.PrintWriter
 
 ​		java.io.PrintStream
+```
 
 ！！！测试找相应的源代码chapter23。
 
@@ -1086,7 +1090,7 @@ IO流（输入输出流）：完成硬盘文件的读写。
 
 ​	System.out 返回的就是 PrintStream类型。
 
-​	PrintStream ps = System.out;  ps.println();    ===>  System.out.println();
+​	PrintStream ps = System.out;  ps.println();    =相当于=>  System.out.println();
 
 -->将输出流输入到文件中。在PrintStream对象中传入一个文件，然后设置System.setOut()。这个文件可以用FileOutputStream创建（方式不唯一）。
 
@@ -1137,6 +1141,8 @@ System.setOut(ps);
 ![操作流程图](snapshots/序列化和反序列化.png)
 
 ​	参与序列化和反序列化的对象必须实现 Serializable 接口。Serializable 接口是一个标志接口，里面没有任何代码。Java虚拟机（JVM）看到这类接口后，会自动生成一个序列版本号。
+
+​	加上transient关键字，该属性将不参加序列化过程。
 
 ​	Java语言采用什么机制来区分 类 class 的？
 

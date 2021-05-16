@@ -15,7 +15,7 @@ public class FileInputStreamTest02 {
         try {
             // 写入文件
             file = new FileInputStream("D:\\2021\\Java\\IdeaProjects\\JavaAdvance\\javase\\chapter23\\src\\com\\dengmin\\demi\\io\\testInputFile");
-            // 创建一个数组
+            // 创建一个数组，定义每一次接收的数据数量
             byte[] b = new byte[4];
             /*// 读取文件，通过这种方式得到文件的是数量
             int readCount = file.read(b);

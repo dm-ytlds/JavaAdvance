@@ -20,7 +20,7 @@ public class FileInputStreamTest03 {
             // 创建一个数组
             byte[] bytes = new byte[bs];
             // 必须进行读取，才能进行转型，不然字节数组是空的。
-            int readCount = file.read(bytes);
+            file.read(bytes);
             System.out.println(new String(bytes));
         } catch (FileNotFoundException e) {
             e.printStackTrace();

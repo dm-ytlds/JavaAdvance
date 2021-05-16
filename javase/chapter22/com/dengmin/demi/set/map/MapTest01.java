@@ -33,8 +33,7 @@ public class MapTest01 {
             System.out.println(kv.getKey() + ":" + kv.getValue());
         }
         // 第二种方式可以写成下面这种foreach 循环
-        for (Map.Entry<Integer, String> kv:
-             kvs) {
+        for (Map.Entry<Integer, String> kv : kvs) {
             System.out.println(kv.getKey() + ":" + kv.getValue());
         }
 

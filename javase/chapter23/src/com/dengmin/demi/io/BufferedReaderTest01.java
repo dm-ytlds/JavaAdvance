@@ -23,7 +23,7 @@ public class BufferedReaderTest01 {
              while (null != (s = bufferedReader.readLine())) {
                  System.out.printf(s);
              }*/
-            file = new FileInputStream("Java学习笔记（持续更新中）.md");
+            file = new FileInputStream("javase/课堂笔记/Java学习笔记（完结）.md");
             // file属于节点流，bis属于包装流
             BufferedInputStream bis = new BufferedInputStream(file);
             // 创建一个数组，大小为文件字节大小

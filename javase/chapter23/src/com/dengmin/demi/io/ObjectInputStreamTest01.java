@@ -13,7 +13,7 @@ public class ObjectInputStreamTest01 {
         try {
             fis = new FileInputStream("javase/chapter23/src/com/dengmin/demi/io/students");
             ois = new ObjectInputStream(fis);
-            // 反序列化
+            // 反序列化，读取文件
             Object o = ois.readObject();
             // Student类中需要实现重写toString方法
             System.out.println(o);
