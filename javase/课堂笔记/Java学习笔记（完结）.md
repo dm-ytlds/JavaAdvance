@@ -936,6 +936,10 @@ public class HashMap {
 
 ​	Hashtable集合扩容：原容量 x 2 + 1。
 
+Hashtable采用取模的方式来计算数组下标，同时数组的长度尽量为素数或者奇数，这样的目的是为了减少Hash碰撞，计算出来的数组下标更加分散，让元素均匀的分布在数组各个位置。
+
+采用模运算效率会比HashMap利用位运算计算数组下标更低。
+
 6.11 Properties是一个Map集合，继承Hashtable。
 
 ​	<font color=#FFFF00>.setProperty(k,v);</font>  // 底层调用Map的put()方法。
